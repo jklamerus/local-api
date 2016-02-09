@@ -213,6 +213,7 @@ Version `1.4.5`
 - added option for turning off data generation - [Add option for turning data generation on or off](https://github.com/isaacloud/local-api/issues/33)
 - fixed request body parsing (when some error occurs - send error response)
 - fixed bug with json-schema **$ref** keyword - now you can use schema references
+- updated Faker.js to 3.0.1
 
 Version `1.4.4`
 - changed message for 'not' error
