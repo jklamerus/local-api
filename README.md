@@ -208,6 +208,12 @@ To see LocalAPI license, go to [LICENSE.md](./docs/LICENSE.md).
 ---
 ## Changelog
 
+Version `1.4.5`
+- show message in console when chosen port is already in use - [Busy port catching](https://github.com/isaacloud/local-api/issues/4)
+- added option for turning off data generation - [Add option for turning data generation on or off](https://github.com/isaacloud/local-api/issues/33)
+- fixed request body parsing (when some error occurs - send error response)
+- fixed bug with json-schema **$ref** keyword - now you can use schema references
+
 Version `1.4.4`
 - changed message for 'not' error
 - added errors for not specified Content-Types in raml

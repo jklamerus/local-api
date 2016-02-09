@@ -3,44 +3,6 @@
     "type": "array",
     "description": "collection of users",
     "items": {
-        "type": "object",
-        "properties": {
-            "id": {
-                "type": "string"
-            },
-            "birthDate": {
-                "type": "string"
-            },
-            "email": {
-                "type": "string"
-            },
-            "firstName": {
-                "type": "string"
-            },
-            "lastName": {
-                "type": "string"
-            },
-            "gender": {
-                "type": "string"
-            },
-            "status": {
-                "type": "boolean"
-            },
-            "createdAt": {
-                "type": "string"
-            },
-            "updatedAt": {
-                "type": "string"
-            },
-            "idArray": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-            },
-            "points": {
-                "type": "integer"
-            }
-        }
+        "$ref": "user.json"
     }
 }

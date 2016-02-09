@@ -14,5 +14,3 @@ node_modules
 
 fake-api/bower_components
 fake-connect/bower_components
-
-example_raml/examples/*

@@ -12,16 +12,16 @@
             "format":"email"
 		},
 		"firstName": {
-			"type":"string"
+			"$ref": "user.json#/properties/firstName"
 		},
 		"gender": {
-            "enum": [ "male", "female" ]
+			"$ref": "user.json#/properties/gender"
 		},
 		"lastName": {
-			"type":"string"
+			"$ref": "user.json#/properties/lastName"
 		},
 		"status": {
-			"type":"boolean"
+			"$ref": "user.json#/properties/status"
 		}
 	},
 	"required": [ "email" ]	
