@@ -20,7 +20,7 @@ program
 	.description('run LocalAPI, path to raml file required')
 	.action(function (ramlPath, options) {
 
-		setLogLevel(program.details);
+		setLogLevel(options.details);
 
 		localapi.start(ramlPath, options);
 
