@@ -90,7 +90,7 @@ localapi run -d raml_example_file.raml
 ```
 
 ### Use static examples
-To run LocalAPI with your own predefined examples (not generated based on templates), use `--no-examples` argument
+To run LocalAPI with your own predefined examples (not generated from templates), use `--no-examples` argument
 
 ```
 localapi run --no-examples raml_example_file.raml
