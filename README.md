@@ -208,8 +208,9 @@ To see LocalAPI license, go to [LICENSE.md](./docs/LICENSE.md).
 ---
 ## Changelog
 
-Version `1.4.6-beta.0`
+Version `1.4.6`
 - updated Faker.js to 3.0.1
+- checking allowed characters in headers improved (due to improved security in Node.js v0.10.42, v0.12.10, v4.3.0 and v5.6.0 - [Read more](https://nodejs.org/en/blog/vulnerability/february-2016-security-releases/))
 
 Version `1.4.5`
 - message shown in console when the chosen port is already in use - [Busy port catching](https://github.com/isaacloud/local-api/issues/4)

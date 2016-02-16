@@ -242,7 +242,7 @@ var localUtils = {
 	setCustomHeaders: function (headers, res) {
 		for (var key in headers) {
 			var curr = headers[key];
-			res.set(key, curr.example);
+			res.set(key, curr.example.replace(/(\n|\r)/g, ''));
 		}
 	},
 
