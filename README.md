@@ -20,6 +20,7 @@ https://github.com/isaacloud/local-api/wiki/Tutorial
   - [Run options](#run-options)
     - [Custom port](#custom-port)
     - [Show running details](#show-running-details)
+    - [Use static examples](#use-static-examples)
   - [RAML](#raml)
     - [Directory structure](#directory-structure)
     - [Supported responses](#supported-responses)
@@ -31,7 +32,7 @@ https://github.com/isaacloud/local-api/wiki/Tutorial
   - [Known problems and limitations](#known-problems-and-limitations)
   - [Planned features and enhancements](#planned-features-and-enhancements)
 - [License](#license)
-  - [Changelog](#changelog)
+- [Changelog](#changelog)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -75,20 +76,27 @@ info: [localapi] App running at http:/0.0.0.0:3333
 ## Run options
 
 ### Custom port
-To run LocalAPI on a custom port use -p argument
+To run LocalAPI on a custom port use `-p` argument
 
 ```
 localapi run raml_example_file.raml -p 3500
 ```
 
 ### Show running details
-To run LocalAPI with additional logs (details mode) use -d argument
+To run LocalAPI with additional logs (details mode) use `-d `argument
 
 ```
-localapi run raml_example_file.raml -d
+localapi run -d raml_example_file.raml
 ```
 
----
+### Use static examples
+To run LocalAPI with your own predefined examples (not generated based on templates), use `--no-examples` argument
+
+```
+localapi run --no-examples raml_example_file.raml
+```
+
+
 ## RAML 
 
 ### Directory structure
@@ -111,7 +119,7 @@ LocalAPI supports:
 * **responses containing data sent in the request body** (see [PUT /users/:userId:](./example_raml/raml_example_file.raml) for reference)
 * **responses for PATCH requests containing fake data merged with data sent in the request body** (see [PATCH /users/:userId:](./example_raml/raml_example_file.raml) for reference)
 
----
+
 ## Dummy data generator
 
 ### Information
@@ -161,7 +169,7 @@ var indexArray = tmplUtils.multiCollection(1, 3)(function (i) {
 });
 // indexArray === [{user_data_json_1}, {user_data_json_2}]
 ```
----
+
 
 ## Known problems and limitations
 
@@ -169,7 +177,7 @@ var indexArray = tmplUtils.multiCollection(1, 3)(function (i) {
 - As of now, no support RAML 1.0.
 - Cannot switch from generated examples to static examples without manually editing the RAML file.
 
----
+
 
 ## Planned features and enhancements
 
@@ -197,16 +205,15 @@ Future releases will provide for improved exception handling, for example, when 
 * **Generating documentation**
 Generating simple documentation of the mock API in the HTML format is also taken into consideration in long-distance plans of the LA team.
 
----
+
 
 # License
 
 To see LocalAPI license, go to [LICENSE.md](./docs/LICENSE.md).
 
----
 
----
-## Changelog
+
+# Changelog
 
 Version `1.4.6-beta.0`
 - updated Faker.js to 3.0.1

@@ -16,7 +16,7 @@ program
 program
 	.command('run <ramlPath>')
 	.option('-p, --port <port>', 'change default port')
-	.option('--no-examples', 'disable examples generation')
+	.option('--no-examples', 'disable template-based generation of examples, use predefined examples')
 	.description('run LocalAPI, path to raml file required')
 	.action(function (ramlPath, options) {
 
