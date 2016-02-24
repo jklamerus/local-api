@@ -1,6 +1,6 @@
 # LocalAPI
 
-[![NPM Version][npm-image]][npm-url]
+[![Node Version][node-image]][node-url]
 
 <img align="right" src="./logo.jpg">
 **LocalAPI** application is based on Node.js library and allows for running a fully functional API on the basis of definitions included in a raml file.
@@ -222,5 +222,5 @@ To see LocalAPI license, go to [LICENSE.md](./docs/LICENSE.md).
 To see LocalAPI changelog, go to [CHANGELOG.md](./docs/CHANGELOG.md).
 
 
-[npm-image]: https://img.shields.io/badge/npm-v0.9.11%2B-blue.svg
-[npm-url]: https://www.npmjs.com/package/localapi
+[node-image]: https://img.shields.io/badge/node-v0.9.11%2B-blue.svg
+[node-url]: https://www.npmjs.com/package/localapi
