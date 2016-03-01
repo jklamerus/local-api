@@ -8,6 +8,11 @@ var fs = require('fs'),
   tmplUtils = require('../models/tmplUtils');
 
 global.faker = require('faker');
+//faker.js method aliases (v. 2.1.5 -> v.3.0.1)
+global.faker.random.array_element = global.faker.random.arrayElement;
+global.faker.random.object_element = global.faker.random.objectElement;
+global.faker.helpers.randomNumber = global.faker.random.number;
+
 global.tmplUtils = tmplUtils;
 
 function prepareUrl(url) {
