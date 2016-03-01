@@ -139,7 +139,7 @@ var localUtils = {
                             properties: {}
                         };
                         for (var k = 0, l = matches.length; k < l; k++) {
-                            values[obj.uriParameters[k].name] = matches[k];
+                            values[obj.uriParameters[k].name] = this.getMatchValue(matches[k], obj.uriParameters[k].schema);
                             schema.properties[obj.uriParameters[k].name] = obj.uriParameters[k].schema;
                         }
 
@@ -153,11 +153,42 @@ var localUtils = {
                 }
             } catch (e) {
                 /** Validation errors, which means that some uri params do not validate to matched raml url **/
-                break;
             }
         }
 
         throw new Error('Specified path not in raml');
+    },
+
+    getMatchValue: function (match, schema) {
+        if (schema.type) {
+            switch (schema.type) {
+                case 'number':
+                    var parsedFloat = parseFloat(match);
+                    if (parsedFloat == match) {
+                        return parsedFloat
+                    } else {
+                        throw new Error('Unable to parse');
+                    }
+                    break;
+                case 'integer':
+                    var parsedInt = parseInt(match);
+                    if (parsedInt == match) {
+                        return parsedInt
+                    } else {
+                        throw new Error('Unable to parse');
+                    }
+                    break;
+                case 'boolean':
+                    var lowerCase = match.toLowerCase();
+                    if (['true', 'false'].indexOf(lowerCase) >= 0) {
+                        return lowerCase == 'true';
+                    } else {
+                        throw new Error('Incorrect boolean value');
+                    }
+                    break;
+            }
+        }
+        return match;
     },
 
     findMethod: function (resource, method) {
@@ -243,10 +274,9 @@ var localUtils = {
             }
             break;
         }
-    },
+    }
 
-
-}
+};
 
 module.exports = {
 
@@ -309,6 +339,5 @@ module.exports = {
         }
 
     }
-
 
 };
