@@ -1,4 +1,7 @@
 # LocalAPI
+
+[![Node Version][node-image]][node-url]
+
 <img align="right" src="./logo.jpg">
 **LocalAPI** application is based on Node.js library and allows for running a fully functional API on the basis of definitions included in a raml file.
 The application also generates dummy data json files from templates and serve them as a response body in API module.
@@ -37,7 +40,8 @@ https://github.com/isaacloud/local-api/wiki/Tutorial
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
-- Install Node.js from http://nodejs.org/
+
+- Install Node.js from http://nodejs.org/, version 0.9.11 or higher
 - Install LocalAPI module via npm
 
 ```
@@ -216,3 +220,7 @@ To see LocalAPI license, go to [LICENSE.md](./docs/LICENSE.md).
 # Changelog
 
 To see LocalAPI changelog, go to [CHANGELOG.md](./docs/CHANGELOG.md).
+
+
+[node-image]: https://img.shields.io/badge/node-v0.9.11%2B-blue.svg
+[node-url]: https://www.npmjs.com/package/localapi
