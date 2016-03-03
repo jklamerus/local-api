@@ -2,15 +2,18 @@
 
 [![Node Version][node-image]][node-url]
 
-<img align="right" src="./logo.jpg">
+<img align="right" src="./docs/logo/logo.jpg">
 **LocalAPI** application is based on Node.js library and allows for running a fully functional API on the basis of definitions included in a raml file.
 The application also generates dummy data json files from templates and serve them as a response body in API module.
 
 In short: LocalAPI generates dummy data and runs local API based on RAML.
 
 ## Tutorial
-**Check out our tutorial for LocalAPI!**
-https://github.com/isaacloud/local-api/wiki/Tutorial
+**Check out our wiki and tutorial for LocalAPI!**
+
+* [How it works?](https://github.com/isaacloud/local-api/wiki/How-it-works%3F)
+* [Tutorial](https://github.com/isaacloud/local-api/wiki/Tutorial)
+
 
 ---
 
@@ -114,14 +117,83 @@ localapi run --no-examples raml_example_file.raml
 
 See [Example RAML directory](example_raml) with generated json files.
 
+
+
+
 ### Supported responses
 
 LocalAPI supports:
 
-* **regular fake data responses for synchronous requests** (see [GET /users/:userId:](./example_raml/raml_example_file.raml) for reference)
-* **empty responses** (see [POST /users](./example_raml/raml_example_file.raml) for reference)
-* **responses containing data sent in the request body** (see [PUT /users/:userId:](./example_raml/raml_example_file.raml) for reference)
-* **responses for PATCH requests containing fake data merged with data sent in the request body** (see [PATCH /users/:userId:](./example_raml/raml_example_file.raml) for reference)
+* **regular fake data responses for synchronous GET requests** 
+  Specify the response example for a GET request as a JSON file/object/array. (See [GET /users/:userId:](./example_raml/raml_example_file.raml) for reference.)
+
+  ```
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include schemas/users.json
+            example: !include examples/users.json
+  ```
+
+
+* **responses containing fake data merged with data sent in the body of POST, PUT, PATCH requests** 
+  Specify the response example for a POST, PUT or PATCH request as a JSON file/object/array. (See [PATCH /users/:userId:](./example_raml/raml_example_file.raml) for reference.)
+
+  ```
+      patch:
+          description: Updates a user partially by his/her id.
+          body:
+            application/json:
+              example: !include examples/user_patch.json
+              schema: !include schemas/user_patch.json
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include schemas/user.json
+                  example: !include examples/user.json
+  ```
+
+
+* **responses containing only data sent in the body of a POST, PUT, PATCH request** 
+  Specify the response example for a POST, PUT or PATCH request as `false`. (See [PUT /users/:userId:](./example_raml/raml_example_file.raml) for reference.)
+
+  ```
+    put:
+      body:
+        application/json:
+          schema: !include schemas/user_put.json
+          example: !include examples/user.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: false
+  ```
+
+
+* **empty responses** 
+  Enter an empty string (`example: ""`) as a response example for GET, POST, PUT, PATCH and DELETE requests. (See [POST /users](./example_raml/raml_example_file.raml) for reference.)
+
+  ```
+    post:
+    description: Creates a user with a system-generated id.
+    body:
+      application/json:
+        example: !include examples/user_post.json
+        schema: !include schemas/user_post.json
+    responses:
+      202:
+        body:
+          application/json:
+            example: ""
+            schema: ""
+  ```
+
+
+
 
 
 ## Dummy data generator
