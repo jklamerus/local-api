@@ -56,7 +56,8 @@ var getResponse = function (ramlRoot, req) {
             var error = result.errors.shift();
             _finalRes = {
                 data: {
-                    message: error.stack.substr(result.propertyPath.length + 1)
+                    message: error.stack.substr(result.propertyPath.length + 1),
+                    code: 400
                 },
                 code: 400
             }
@@ -139,7 +140,7 @@ var localUtils = {
                             properties: {}
                         };
                         for (var k = 0, l = matches.length; k < l; k++) {
-                            values[obj.uriParameters[k].name] = this.getMatchValue(matches[k], obj.uriParameters[k].schema);
+                            values[obj.uriParameters[k].name] = this.getMatchValue(matches[k], obj.uriParameters[k].name, obj.uriParameters[k].schema);
                             schema.properties[obj.uriParameters[k].name] = obj.uriParameters[k].schema;
                         }
 
@@ -152,6 +153,9 @@ var localUtils = {
                     return obj.resource;
                 }
             } catch (e) {
+                if( e instanceof TypeError ) {
+                    throw e;
+                }
                 /** Validation errors, which means that some uri params do not validate to matched raml url **/
             }
         }
@@ -159,23 +163,23 @@ var localUtils = {
         throw new Error('Specified path not in raml');
     },
 
-    getMatchValue: function (match, schema) {
+    getMatchValue: function (match, paramName, schema) {
         if (schema.type) {
             switch (schema.type) {
                 case 'number':
                     var parsedFloat = parseFloat(match);
                     if (parsedFloat == match) {
-                        return parsedFloat
+                        return parsedFloat;
                     } else {
-                        throw new Error('Unable to parse');
+                        throw new TypeError(paramName+' should be a number');
                     }
                     break;
                 case 'integer':
                     var parsedInt = parseInt(match);
                     if (parsedInt == match) {
-                        return parsedInt
+                        return parsedInt;
                     } else {
-                        throw new Error('Unable to parse');
+                        throw new TypeError(paramName+' should be an integer');
                     }
                     break;
                 case 'boolean':
@@ -183,7 +187,7 @@ var localUtils = {
                     if (['true', 'false'].indexOf(lowerCase) >= 0) {
                         return lowerCase == 'true';
                     } else {
-                        throw new Error('Incorrect boolean value');
+                        throw new TypeError(paramName+' should be a boolean');
                     }
                     break;
             }
@@ -332,10 +336,17 @@ module.exports = {
             });
         } catch (e) {
             winston.error(e);
-            res.status(404).send({
-                "message": "This resource does not exist, look into the documentation",
-                "code": 40402
-            });
+            if( e instanceof TypeError ) {
+                res.status(400).send({
+                    "message": e.message,
+                    "code": 400
+                });
+            } else {
+                res.status(404).send({
+                    "message": "This resource does not exist, look into the documentation",
+                    "code": 404
+                });
+            }
         }
 
     }
