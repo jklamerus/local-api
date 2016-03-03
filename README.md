@@ -19,7 +19,7 @@ In short: LocalAPI generates dummy data and runs local API based on RAML.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
+### Table of Contents
 
   - [Installation](#installation)
   - [Usage](#usage)
