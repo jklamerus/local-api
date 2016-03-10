@@ -1,8 +1,8 @@
-<img align="right" height="250" src="./docs/logo/logo.png">
 # LocalAPI
 
 [![Node Version][node-image]][node-url]
 
+<img align="right" src="./docs/logo/logo.jpg">
 **LocalAPI** application is based on Node.js library and allows for running a fully functional API on the basis of definitions included in a raml file.
 The application also generates dummy data json files from templates and serve them as a response body in API module.
 
