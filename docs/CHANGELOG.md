@@ -1,5 +1,8 @@
 # LocalAPI Changelog
 
+Version `1.5.0`
+- fixed url matching (now You are able to create resource that can handle multiple slashes, ex. pages/:URI, where URI can be ex. "/en/about/company")
+
 Version `1.4.6`
 - updated Faker.js to 3.0.1
 - checking allowed characters in headers improved (due to improved security in Node.js v0.10.42, v0.12.10, v4.3.0 and v5.6.0 - [Read more](https://nodejs.org/en/blog/vulnerability/february-2016-security-releases/))
