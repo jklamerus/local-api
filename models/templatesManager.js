@@ -28,9 +28,9 @@ function genJson(url) {
   var urlParts = url.split(path.sep),
     tmplFilename = path.basename(url, '.js'),
     fileContent;
-
+  
   urlParts.pop();
-
+  
   winston.debug('[localapi]', 'Start'.yellow, 'reading template ' + colors.gray(tmplFilename + '.js'));
   fileContent = require(url);
   fileContent = JSON.stringify(fileContent, null, 4);
@@ -38,10 +38,9 @@ function genJson(url) {
 
   winston.debug('[localapi]', 'Start'.yellow, 'generating json from template ' + colors.gray(tmplFilename + '.js'));
 
-  urlParts.pop();
-  urlParts.push('examples');
   var dirPath = urlParts.join(path.sep) + path.sep;
-
+  dirPath = dirPath.replace(path.sep + 'templates' + path.sep, path.sep + 'examples' + path.sep)
+ 
   fs.writeFileSync(dirPath + tmplFilename + '.json', fileContent, {flags: 'w'});
 
   winston.debug('[localapi]', 'Success'.green, 'generating json from template ' + colors.gray(tmplFilename + '.js'));
@@ -62,27 +61,40 @@ function readTemplates() {
 
   winston.debug('[localapi]', 'Success'.green,  'cleaning examples directory');
 
-  //winston.debug('[localapi] Process '.cyan);
+  var patt = /(\.js)$/i
+  
+  var read_dir = function(dir){
+   
+    fs.readdir(dir, function (err, files) {
+      if (err) {throw new Error(err);}
+      files.forEach(function(file){
+        file = path.resolve(dir, file);
+        fs.stat(file, function(err, stat) {
+          if (err) {throw new Error(err);}
+          if(stat && stat.isDirectory()){
+            try {
+              var example_dir_path = file;
+              example_dir_path = example_dir_path.replace('templates','examples');
+              fse.mkdirsSync(example_dir_path);
+            } catch(e) {
+              if ( e.code != 'EEXIST' ) throw e;
+            }
+            read_dir(file);
+          }else{
+            if (patt.test(file)) {
+              genJson(file);
+            }
+          }
+         
+        })
+      })
+      
+      deferred.resolve();
+  
+    })
+  }
+  read_dir(pathTemplates);
 
-  fs.readdir(pathTemplates, function (err, files) {
-    if (err) {throw new Error(err);}
-
-    var i = files.length,
-      patt = /(\.js)$/i,
-      tmplPath;
-
-    while (i--) {
-      if (patt.test(files[i])) {
-
-        tmplPath = path.join(pathTemplates, files[i]);
-        genJson(tmplPath);
-
-      }
-    }
-
-    deferred.resolve();
-
-  })
 
   return deferred.promise;
 }
