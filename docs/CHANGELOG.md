@@ -1,5 +1,8 @@
 # LocalAPI Changelog
 
+Version `1.6.0`
+- added support for nested templates
+
 Version `1.5.0`
 - fixed url matching (now You are able to create resource that can handle multiple slashes, ex. pages/:URI, where URI can be ex. "/en/about/company")
 

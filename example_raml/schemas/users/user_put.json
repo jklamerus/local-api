@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "a user object for PUT",
+    "properties": {
+        "birthDate": {
+            "$ref": "user_post.json#/properties/birthDate"
+        },
+        "email": {
+            "$ref": "user_post.json#/properties/email"
+        },
+        "firstName": {
+            "$ref": "user.json#/properties/firstName"
+        },
+        "gender": {
+            "$ref": "user.json#/properties/gender"
+        },
+        "lastName": {
+            "$ref": "user.json#/properties/lastName"
+        },
+        "status": {
+            "$ref": "user.json#/properties/status"
+        }
+    },
+    "required": [
+        "email"
+    ]
+}

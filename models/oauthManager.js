@@ -1,7 +1,7 @@
 //var oidc = require('openid-connect').oidc();
 
 module.exports = function () {
-    
+
 }
 
 //var _ = require('lodash');

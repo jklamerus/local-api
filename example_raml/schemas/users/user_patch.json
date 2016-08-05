@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Users",
+    "description": "a user object for PATCH",
+    "type": "object",
+    "properties": {},
+    "additionalProperties": {
+        "description": "a user property added by the admin, a key:value pair of any data type",
+        "type": [
+            "string",
+            "object",
+            "boolean",
+            "array",
+            "number"
+        ]
+    }
+}

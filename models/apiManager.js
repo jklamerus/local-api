@@ -153,7 +153,7 @@ var localUtils = {
                     return obj.resource;
                 }
             } catch (e) {
-                if( e instanceof TypeError ) {
+                if (e instanceof TypeError) {
                     throw e;
                 }
                 /** Validation errors, which means that some uri params do not validate to matched raml url **/
@@ -171,7 +171,7 @@ var localUtils = {
                     if (parsedFloat == match) {
                         return parsedFloat;
                     } else {
-                        throw new TypeError(paramName+' should be a number');
+                        throw new TypeError(paramName + ' should be a number');
                     }
                     break;
                 case 'integer':
@@ -179,7 +179,7 @@ var localUtils = {
                     if (parsedInt == match) {
                         return parsedInt;
                     } else {
-                        throw new TypeError(paramName+' should be an integer');
+                        throw new TypeError(paramName + ' should be an integer');
                     }
                     break;
                 case 'boolean':
@@ -187,7 +187,7 @@ var localUtils = {
                     if (['true', 'false'].indexOf(lowerCase) >= 0) {
                         return lowerCase == 'true';
                     } else {
-                        throw new TypeError(paramName+' should be a boolean');
+                        throw new TypeError(paramName + ' should be a boolean');
                     }
                     break;
             }
@@ -336,7 +336,7 @@ module.exports = {
             });
         } catch (e) {
             winston.error(e);
-            if( e instanceof TypeError ) {
+            if (e instanceof TypeError) {
                 res.status(400).send({
                     "message": e.message,
                     "code": 400

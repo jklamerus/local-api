@@ -3,6 +3,6 @@
     "type": "array",
     "description": "collection of users",
     "items": {
-        "$ref": "user.json"
+        "$ref": "users/user.json"
     }
 }
