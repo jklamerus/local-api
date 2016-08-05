@@ -1,5 +1,5 @@
-var ValidatorResult  = require('jsonschema').ValidatorResult;
-var Validator        = require('jsonschema').Validator;
+var ValidatorResult = require('jsonschema').ValidatorResult;
+var Validator = require('jsonschema').Validator;
 
 
 var validateJsonNot = function (instance, schema, options, ctx) {
@@ -39,7 +39,7 @@ jsonSchemaValidator.attributes.not = validateJsonNot;
 
 module.exports = {
 
-    get: function(){
+    get: function () {
         return jsonSchemaValidator;
     },
 

@@ -1,40 +1,40 @@
 #!/usr/bin/env node
 
 var pack = require('../package'),
-	program = require('commander'),
-	path = require('path'),
-	fs = require('fs'),
-	winston = require('winston'),
-	root = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
-	localapi = require(path.join(root, 'localApi.js'));
+    program = require('commander'),
+    path = require('path'),
+    fs = require('fs'),
+    winston = require('winston'),
+    root = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
+    localapi = require(path.join(root, 'localApi.js'));
 
 
 program
-	.version(pack.version);
+    .version(pack.version, '-v, --version');
 
 program
-	.command('run <ramlPath>')
-	.option('-p, --port <port>', 'change default port')
-	.option('--no-examples', 'disable template-based generation of examples, use predefined examples')
-	.option('-d, --details', 'show details')
-	.option('--no-examples', 'disable examples generation')
-	.description('run LocalAPI, path to raml file required')
-	.action(function (ramlPath, options) {
+    .command('run <ramlPath>')
+    .option('-p, --port <port>', 'change default port')
+    .option('--no-examples', 'disable template-based generation of examples, use predefined examples')
+    .option('-d, --details', 'show details')
+    .option('--no-examples', 'disable examples generation')
+    .description('run LocalAPI, path to raml file required')
+    .action(function (ramlPath, options) {
 
-		setLogLevel(options.details);
+        setLogLevel(options.details);
 
-		localapi.start(ramlPath, options);
+        localapi.start(ramlPath, options);
 
-	});
+    });
 
 program.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
-	program.outputHelp();
+    program.outputHelp();
 }
 
 function setLogLevel(isDetails) {
-	if (isDetails) {
-		winston.level = 'debug';
-	}
+    if (isDetails) {
+        winston.level = 'debug';
+    }
 }

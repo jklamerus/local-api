@@ -37,8 +37,8 @@ resourceTypes:
     description: Creates a user with a system-generated id.
     body:
       application/json:
-        example: !include examples/user_post.json
-        schema: !include schemas/user_post.json
+        example: !include examples/users/user_post.json
+        schema: !include schemas/users/user_post.json
     responses:
       202:
         body:
@@ -63,19 +63,19 @@ resourceTypes:
         description: Updates a user partially by his/her id.
         body:
           application/json:
-            example: !include examples/user_patch.json
-            schema: !include schemas/user_patch.json
+            example: !include examples/users/user_patch.json
+            schema: !include schemas/users/user_patch.json
         responses:
           200:
             body:
               application/json:
-                schema: !include schemas/user.json
-                example: !include examples/user.json
+                schema: !include schemas/users/user.json
+                example: !include examples/users/user.json
     put:
       body:
         application/json:
-          schema: !include schemas/user_put.json
-          example: !include examples/user.json
+          schema: !include schemas/users/user_put.json
+          example: !include examples/users/user.json
       responses:
         200:
           body:
@@ -92,5 +92,5 @@ resourceTypes:
         200:
           body:
             application/json:
-              schema: !include schemas/user.json
-              example: !include examples/user.json
+              schema: !include schemas/users/user.json
+              example: !include examples/users/user.json
