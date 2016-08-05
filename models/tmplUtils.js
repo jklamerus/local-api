@@ -11,7 +11,7 @@ module.exports = {
     },
 
     randomNumber: function (min, max) {
-        return Math.floor(Math.random()*(max-min+1)+min);
+        return Math.floor(Math.random() * (max - min + 1) + min);
     },
 
     multiCollection: function (min, max) {
@@ -25,7 +25,7 @@ module.exports = {
         }
     },
 
-    getTemplate: function(url) {
+    getTemplate: function (url) {
         url = path.join(lapi.ramlRootDir, 'templates', url);
         delete require.cache[require.resolve(url)];
         return require(url);
