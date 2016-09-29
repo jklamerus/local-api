@@ -3,7 +3,7 @@
 [![Node Version][node-image]][node-url]
 
 <img align="right" src="./docs/logo/logo.jpg">
-**LocalAPI** is a Node.js-based application that allows for running a fully functional API on the basis of definitions contained in a RAML file. LocalAPI also generates dummy data JSON files based on JavaScript templates. Example data is generated every time LocalAPI starts and is utilized as response body in the API module.
+**LocalAPI** is a Node.js-based application that allows for running a fully functional API on the basis of definitions contained in a RAML file. LocalAPI also generates dummy data JSON files based on JavaScript templates. Example data is generated every time LocalAPI starts and is utilized as responses in the API module.
 
 
 ## Tutorial
