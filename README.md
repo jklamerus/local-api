@@ -26,6 +26,7 @@
     - [Show running details](#show-running-details)
     - [Use static examples](#use-static-examples)
 - [RAML](#raml)
+  - [Version](#version)
   - [Directory structure](#directory-structure)
   - [Supported responses](#supported-responses)
 - [Dummy data generator](#dummy-data-generator)
@@ -105,7 +106,11 @@ localapi run --no-examples raml_example_file.raml
 
 ---
 
-## RAML 
+## RAML
+
+### Version
+
+As of now, LocalAPI supports RAML 0.8.
 
 ### Directory structure
 
