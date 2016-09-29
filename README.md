@@ -114,13 +114,13 @@ As of now, LocalAPI supports RAML 0.8.
 
 ### Directory structure
 
-- [dir] examples - dummy data json files (generated from templates)
-- [dir] static_examples - dummy data json files (static)
+- [dir] examples - dummy data JSON files (generated from templates)
+- [dir] static_examples - dummy data JSON files (static)
 - [dir] schemas - json schemas
-- [dir] templates - dummy data templates for [generator](#dummy-data-generator)
+- [dir] templates - dummy data templates for the [generator](#dummy-data-generator)
 - {YOUR\_RAML\_FILENAME}.raml - the RAML file
 
-See [Example RAML directory](example_raml).
+See [Example RAML directory](./example_raml).
 
 
 ### Supported responses
@@ -162,7 +162,7 @@ LocalAPI supports:
   ```
 
 
-* **response containing only data sent in the body of the request* 
+* **response containing only data sent in the body of the request**
 
   Available for POST, PUT, PATCH requests.
 
@@ -216,7 +216,7 @@ LocalAPI supports:
 
 ### How to
 
-1. Create JavaScript templates in `/templates` directory ([see example](#raml)).
+1. Create JavaScript templates in `/templates` directory ([see example](./example_raml/templates/users/user.js)).
 
 2. Run LocalAPI to generate JSON files ([see Usage](#usage)).
 
