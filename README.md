@@ -45,10 +45,18 @@
 ## Installation
 
 1. Install Node.js from http://nodejs.org/, version 0.9.11 or higher
-2. Install LocalAPI module via npm
+2. Install LocalAPI module via npm or yarn
+
+    a) npm
 
   ```
   npm install -g localapi
+  ```
+
+    b) yarn
+
+  ```
+  yarn global add localapi
   ```
 
 ---
